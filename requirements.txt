@@ -3,3 +3,4 @@ python-decouple
 pytest
 pytest-cov
 tweepy
+nltk

@@ -9,3 +9,6 @@ class APIConfig:
     BEARER_TOKEN: str = config('BEARER_TOKEN')
     ACCESS_TOKEN: str = config('ACCESS_TOKEN')
     ACCESS_TOKEN_SECRET: str = config('ACCESS_TOKEN_SECRET')
+
+class SAConfig:
+    SENTIMENT_ANALIZER: str = config('SENTIMENT_ANALIZER')
