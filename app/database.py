@@ -1,3 +1,4 @@
 import sqlite3 as sqlt
+from config import DB_PATH
 
-sqlt.connect('../data/tweets.db')
+sqlt.connect(DB_PATH)

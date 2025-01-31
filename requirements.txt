@@ -1,2 +1,5 @@
 python-dotenv
 python-decouple
+pytest
+pytest-cov
+tweepy
