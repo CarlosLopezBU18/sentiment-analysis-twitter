@@ -9,8 +9,7 @@ client = tw.Client(bearer_token=APIConfig.BEARER_TOKEN,
                    wait_on_rate_limit=True)
 
 
-user = client.get_user(username='RealAlexJones')
+user = client.get_user(username='elonmusk')  # Example public account
 print(user.data['id'])
-
-fl = client.get_list_followers(id=user.data['id'])
+fl = client.get_users_followers(id=user.data['id'], user_auth=True)
 print(fl)
