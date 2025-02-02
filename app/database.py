@@ -1,4 +1,4 @@
 import sqlite3 as sqlt
-from config import DB_PATH
+from config import DBConfig
 
-sqlt.connect(DB_PATH)
+sqlt.connect(DBConfig.DB_PATH)

@@ -4,4 +4,4 @@ pytest
 pytest-cov
 tweepy
 nltk
-googletrans
+deep-translator
