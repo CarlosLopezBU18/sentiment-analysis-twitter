@@ -5,6 +5,6 @@ def download_vader():
     from nltk import download
     download(SAConfig.SENTIMENT_ANALIZER)   
 
-analyzer = SentimentIntensityAnalyzer()
-sc = analyzer.polarity_scores("I love dogs")
-print(sc)
+def analize_message(text: str):
+    analyzer = SentimentIntensityAnalyzer()
+    return analyzer.polarity_scores(text)

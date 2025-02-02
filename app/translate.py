@@ -1,18 +1,19 @@
 from asyncio import run
+import threading as th
 from googletrans import Translator
 
 class GTranslator:
-    def __init__(self):
-        self.trans = Translator()
-
-    async def _detect(self, text: str):
-        return await self.trans.detect(text=text)
     
-    async def _api_call(self, text: str):
-        return await self.trans.translate(text=text)
-    
-    def is_english(self, text: str):
-        return run(self._detect(text=text)).lang == 'en'
+    _trans = Translator()
 
-    def translate(self, text: str):
-        return run(self._api_call(text=text))
+    async def _translate(text: str):
+        detection = await GTranslator._trans.detect(text=text)
+        
+        if detection.lang == 'en':
+            return text, True
+        
+        translation = await GTranslator._trans.translate(text=text)
+        return translation.pronunciation, False
+    
+    def translate(text: str):
+        return run(GTranslator._translate(text=text))
