@@ -1,15 +1,20 @@
 import tweepy as tw
 from config import APIConfig
 
-client = tw.Client(bearer_token=APIConfig.BEARER_TOKEN,
+# auth = tw.OAuth1UserHandler(APIConfig.API_KEY, APIConfig.API_KEY_SECRET, APIConfig.ACCESS_TOKEN, APIConfig.ACCESS_TOKEN_SECRET)
+
+# api = tw.API(auth=auth)
+
+client = tw.Client(bearer_token=APIConfig.BEARER_TOKEN, 
                    consumer_key=APIConfig.API_KEY, 
                    consumer_secret=APIConfig.API_KEY_SECRET, 
-                   access_token=APIConfig.ACCESS_TOKEN,     
+                   access_token=APIConfig.ACCESS_TOKEN, 
                    access_token_secret=APIConfig.ACCESS_TOKEN_SECRET,
                    wait_on_rate_limit=True)
 
+X = client.get_user(username='X')
+id = X.data['id']
 
-user = client.get_user(username='elonmusk')  # Example public account
-print(user.data['id'])
-fl = client.get_users_followers(id=user.data['id'], user_auth=True)
-print(fl)
+tweets = client.get_users_tweets(id=id)
+
+print(tweets.data)
